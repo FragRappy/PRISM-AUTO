@@ -1,0 +1,34 @@
+.divider {
+  display: flex;
+  width: 2px;
+  height: 40px;
+  align-items: center;
+
+  @mixin light {
+    background-color: black;
+  }
+
+  @mixin dark {
+    background-color: white;
+  }
+}
+
+.light {
+  @mixin dark {
+    display: none;
+  }
+
+  @mixin light {
+    display: block;
+  }
+}
+
+.dark {
+  @mixin light {
+    display: none;
+  }
+
+  @mixin dark {
+    display: block;
+  }
+}
