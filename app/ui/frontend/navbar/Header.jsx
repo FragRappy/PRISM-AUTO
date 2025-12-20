@@ -61,10 +61,10 @@ export function Header() {
           onClose={close}
           withCloseButton={false}
           position="bottom"
-          radius={20}
           size="40%"
           zIndex={1000000}
           aria-label="Menu de navigation mobile"
+          className={classes.drawer}
         >
           <Pill w={150} h={4} mx="auto" display={"block"} bg={"darkgray"} />
 
