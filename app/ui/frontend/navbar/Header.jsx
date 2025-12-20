@@ -62,9 +62,14 @@ export function Header() {
           withCloseButton={false}
           position="bottom"
           size="40%"
-          zIndex={1000000}
+          zIndex={10000}
           aria-label="Menu de navigation mobile"
-          className={classes.drawer}
+          styles={{
+            content: {
+              borderTopLeftRadius: "var(--mantine-radius-lg)",
+              borderTopRightRadius: "var(--mantine-radius-lg)",
+            },
+          }}
         >
           <Pill w={150} h={4} mx="auto" display={"block"} bg={"darkgray"} />
 
