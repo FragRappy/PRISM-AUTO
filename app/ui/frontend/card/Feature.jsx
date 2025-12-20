@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Badge,
   Card,
@@ -15,42 +17,42 @@ const mockdata = [
   {
     title: "RestorFX",
     description:
-      "This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit",
+      "Texte à propos de RestorFX, ses avantages et ses caractéristiques uniques.",
     icon: IconGauge,
   },
   {
     title: "ClearFX",
     description:
-      "People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma",
+      "Texte à propos de ClearFX, ses avantages et ses caractéristiques uniques.",
     icon: IconUser,
   },
   {
     title: "Number",
     description:
-      "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      "Texte à propos de Number, ses avantages et ses caractéristiques uniques.",
     icon: IconCookie,
   },
   {
     title: "CleanFX",
     description:
-      "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      "Texte à propos de CleanFX, ses avantages et ses caractéristiques uniques.",
     icon: IconCookie,
   },
   {
     title: "paintFX",
     description:
-      "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      "Texte à propos de paintFX, ses avantages et ses caractéristiques uniques.",
     icon: IconCookie,
   },
   {
     title: "shapeFX",
     description:
-      "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      "Texte à propos de shapeFX, ses avantages et ses caractéristiques uniques.",
     icon: IconCookie,
   },
 ];
 
-export function FeaturesCards() {
+export function FeaturesCard() {
   const theme = useMantineTheme();
   const features = mockdata.map((feature) => (
     <Card
@@ -74,17 +76,19 @@ export function FeaturesCards() {
     <Container size="lg" py="xl">
       <Group justify="center">
         <Badge variant="filled" size="lg">
-          L'innovation pour votre voiture
+          L'innovation pour votre véhicule
         </Badge>
       </Group>
 
       <Title order={2} className={classes.title} ta="center" mt="sm">
-        Integrate effortlessly with any technology stack
+        Texte à propos des fonctionnalités
       </Title>
 
       <Text c="dimmed" className={classes.description} ta="center" mt="md">
-        Every once in a while, you’ll see a Golbat that’s missing some fangs.
-        This happens when hunger drives it to try biting a Steel-type Pokémon.
+        Texte long pour décrire les fonctionnalités et les avantages des
+        produits ou services proposés. Cela peut inclure des informations sur la
+        qualité, la durabilité, la performance, et d'autres aspects importants
+        qui intéressent les clients potentiels.
       </Text>
 
       <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl" mt={50}>

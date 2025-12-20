@@ -1,0 +1,6 @@
+.border {
+  margin-top: 120px;
+  padding: var(--mantine-spacing-md) var(--mantine-spacing-md);
+  border-top: 1px solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}

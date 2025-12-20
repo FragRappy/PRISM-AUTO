@@ -1,6 +1,4 @@
-"use client";
-
-import { FeaturesCards } from "./ui/frontend/card/Feature";
+import { FeaturesCard } from "./ui/frontend/card/Feature";
 import { Footer } from "./ui/frontend/navbar/Footer";
 import { Header } from "./ui/frontend/navbar/Header";
 
@@ -11,7 +9,7 @@ export default function Home() {
       <main>
         <section>
           {/* <HeroCarousel /> */}
-          <FeaturesCards />
+          <FeaturesCard />
         </section>
       </main>
       <Footer />

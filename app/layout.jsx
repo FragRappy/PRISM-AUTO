@@ -18,7 +18,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Prism Auto | RestorFX",
+  title: {
+    default: "Prism Auto | RestorFX",
+    template: "%s - Prism Auto | RestorFX",
+  },
   description: "Votre centre d'esthétique auto",
 };
 
