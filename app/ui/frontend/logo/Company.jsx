@@ -1,6 +1,7 @@
 import { Group, Image } from "@mantine/core";
 import cx from "clsx";
 import NextImage from "next/image";
+import Link from "next/link";
 import LogoDark from "../../../../public/logo-dark.svg";
 import LogoLight from "../../../../public/logo-light.svg";
 import RestorFXDark from "../../../../public/restorfx-dark.svg";
@@ -9,7 +10,7 @@ import classes from "./Company.module.css";
 
 export function LogoCompany({ prismsize, restorfxsize }) {
   return (
-    <Group component="a" href="/">
+    <Group component={Link} href="/">
       <Group>
         <Image
           component={NextImage}
