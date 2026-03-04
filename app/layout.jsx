@@ -2,7 +2,9 @@ import "@mantine/carousel/styles.css";
 import {
   ColorSchemeScript,
   MantineProvider,
+  createTheme,
   mantineHtmlProps,
+  virtualColor,
 } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { ModalsProvider } from "@mantine/modals";
@@ -19,11 +21,42 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "Prism Auto | RestorFX",
-    template: "%s - Prism Auto | RestorFX",
+    default: "Prism Auto | RestorFX Bourg-en-Bresse",
+    template: "%s - Prism Auto | RestorFX Bourg-en-Bresse",
   },
-  description: "Votre centre d'esthétique auto",
+  description: "Votre centre esthétique automobile",
+  keywords: [
+    "restorfx",
+    "esthetique",
+    "automobile",
+    "nettoyage",
+    "rénovation phares",
+    "carrosserie",
+    "prismauto",
+    "jantes",
+    "ceramique",
+    "lavage",
+    "rénovation plastiques",
+    "restauration",
+    "rénovation",
+    "retouche",
+    "peinture",
+    "vernis",
+  ],
+  authors: "Charles-Edouard Breton",
+  creator: "Prism Auto",
+  publisher: "Prism Auto",
 };
+
+const theme = createTheme({
+  colors: {
+    primary: virtualColor({
+      name: "primary",
+      dark: "yellow",
+      light: "blue",
+    }),
+  },
+});
 
 export default function RootLayout({ children }) {
   return (

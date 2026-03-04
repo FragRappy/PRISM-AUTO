@@ -1,7 +1,11 @@
 "use client";
 
 import { ActionIcon, Group, Text } from "@mantine/core";
-import { IconBrandFacebook, IconBrandInstagram } from "@tabler/icons-react";
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTiktok,
+} from "@tabler/icons-react";
 import Link from "next/link";
 import { LogoCompany } from "../logo/Company";
 import { MapWithPopup } from "../map/Store";
@@ -40,19 +44,47 @@ export function Footer() {
           <Text
             variant="gradient"
             gradient={{
-              from: "rgba(0, 225, 255, 0.99)",
-              to: "rgba(255, 0, 157, 0.81)",
+              from: "rgba(113, 236, 251)",
+              to: "rgba(207, 75, 254)",
               deg: 90,
             }}
             size="sm"
           >
             Suivez-nous
           </Text>
-          <ActionIcon size="lg" variant="default" radius="xl">
+          <ActionIcon
+            component={Link}
+            href="https://www.facebook.com/prismauto"
+            target="_blank"
+            size="lg"
+            variant="default"
+            radius="xl"
+            aria-label="Ouvre dans une nouvelle page la page facebook de prism auto"
+            className={classes.socialIcon}
+          >
             <IconBrandFacebook size={25} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
+          <ActionIcon
+            component={Link}
+            href="test"
+            size="lg"
+            variant="default"
+            radius="xl"
+            aria-label="Ouvre dans une nouvelle page la page instagram de prism auto"
+            className={classes.socialIcon}
+          >
             <IconBrandInstagram size={25} stroke={1.5} />
+          </ActionIcon>
+          <ActionIcon
+            component={Link}
+            href="test"
+            size="lg"
+            variant="default"
+            radius="xl"
+            aria-label="Ouvre dans une nouvelle page la page tiktok de prism auto"
+            className={classes.socialIcon}
+          >
+            <IconBrandTiktok size={25} stroke={1.5} />
           </ActionIcon>
         </Group>
       </div>

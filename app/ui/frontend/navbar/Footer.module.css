@@ -28,3 +28,11 @@
     margin-bottom: var(--mantine-spacing-xl);
   }
 }
+
+.socialIcon {
+  color: var(--mantine-color-gray-9);
+
+  &:hover {
+    color: light-dark(#cf4bfe, var(--mantine-color-yellow-5));
+  }
+}

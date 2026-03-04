@@ -10,7 +10,14 @@ import {
   Title,
   useMantineTheme,
 } from "@mantine/core";
-import { IconCookie, IconGauge, IconUser } from "@tabler/icons-react";
+import {
+  IconCarCrash,
+  IconCookie,
+  IconGauge,
+  IconPalette,
+  IconTestPipe,
+  IconUser,
+} from "@tabler/icons-react";
 import classes from "./Feature.module.css";
 
 const mockdata = [
@@ -21,34 +28,34 @@ const mockdata = [
     icon: IconGauge,
   },
   {
-    title: "ClearFX",
+    title: "Restauration des phares",
     description:
       "Texte à propos de ClearFX, ses avantages et ses caractéristiques uniques.",
     icon: IconUser,
   },
   {
-    title: "Number",
+    title: "Restauration des plastiques",
     description:
       "Texte à propos de Number, ses avantages et ses caractéristiques uniques.",
     icon: IconCookie,
   },
   {
-    title: "CleanFX",
+    title: "Retouche peinture",
     description:
       "Texte à propos de CleanFX, ses avantages et ses caractéristiques uniques.",
-    icon: IconCookie,
+    icon: IconPalette,
   },
   {
-    title: "paintFX",
+    title: "protection céramique",
     description:
       "Texte à propos de paintFX, ses avantages et ses caractéristiques uniques.",
-    icon: IconCookie,
+    icon: IconTestPipe,
   },
   {
-    title: "shapeFX",
+    title: "Lavage et Nettoyage",
     description:
       "Texte à propos de shapeFX, ses avantages et ses caractéristiques uniques.",
-    icon: IconCookie,
+    icon: IconCarCrash,
   },
 ];
 
@@ -62,7 +69,7 @@ export function FeaturesCard() {
       className={classes.card}
       padding="xl"
     >
-      <feature.icon size={50} stroke={1.5} color={theme.colors.blue[6]} />
+      <feature.icon size={50} stroke={1.5} className={classes.icon} />
       <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
         {feature.title}
       </Text>

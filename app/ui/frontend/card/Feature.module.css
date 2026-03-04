@@ -38,3 +38,10 @@
     margin-top: var(--mantine-spacing-sm);
   }
 }
+
+.icon {
+  color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+}

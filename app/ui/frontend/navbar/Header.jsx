@@ -37,49 +37,49 @@ import classes from "./Header.module.css";
 
 const links = [
   {
-    href: "/services",
-    label: "Nos services",
+    href: "/prestations",
+    label: "Nos prestations",
     icon: IconChevronDown,
     sublinks: [
       {
         active: true,
-        href: "/services/restorfx",
+        href: "/prestation/restorfx",
         label: "Restauration du vernis",
         img: Restorfx,
       },
       {
         active: true,
-        href: "/services/headlightfx",
+        href: "/prestation/restauration-phares",
         label: "Restauration des phares",
         img: Headlight,
       },
       {
         active: true,
-        href: "/services/trimfx",
+        href: "/prestation/trimfx",
         label: "Restauration des plastiques",
         img: Trimfx,
       },
       {
-        active: true,
-        href: "/services/leatherfx",
+        active: false,
+        href: "/prestation/restauration-cuirs",
         label: "Restauration des cuirs",
         img: Leatherfx,
       },
       {
         active: true,
-        href: "/services/paintfx",
+        href: "/prestation/retouche-peinture",
         label: "Retouche peinture",
         img: Paintfx,
       },
       {
         active: true,
-        href: "/services/clearfx",
+        href: "/prestation/clearfx",
         label: "Protection céramique",
         img: Clearfx,
       },
       {
         active: true,
-        href: "/services/cleanfx",
+        href: "/prestation/lavage-nettoyage",
         label: "Lavage et Nettoyage",
         img: Cleanfx,
       },
@@ -155,36 +155,39 @@ export function Header() {
                 </Popover.Target>
                 <Popover.Dropdown p="md" maw={"95%"}>
                   <SimpleGrid cols={2} spacing="xs" maw={1000}>
-                    {link.sublinks.map((sub) => (
-                      <Paper
-                        component={Link}
-                        key={sub.label}
-                        href={sub.href}
-                        withBorder
-                        radius="md"
-                        className={classes.card}
-                        miw={300}
-                      >
-                        <AspectRatio className={classes.imageWrapper}>
-                          <Image
-                            component={NextImage}
-                            src={sub.img}
-                            alt={sub.label}
-                            fill
-                            style={{
-                              objectFit: "cover",
-                            }}
-                          />
-                          <Overlay className={classes.overlay} />
-                        </AspectRatio>
+                    {link.sublinks.map((sub) => {
+                      const CardContent = (
+                        <Paper
+                          component={sub.active === true ? Link : "div"}
+                          key={sub.label}
+                          href={sub.active === true ? sub.href : undefined}
+                          withBorder
+                          radius="md"
+                          className={classes.card}
+                          miw={300}
+                        >
+                          <AspectRatio className={classes.imageWrapper}>
+                            <Image
+                              component={NextImage}
+                              src={sub.img}
+                              alt={sub.label}
+                              h={70}
+                              w={200}
+                              fit="cover"
+                              fallbackSrc="https://placehold.net/600x400.png"
+                            />
+                            <Overlay className={classes.overlay} />
+                          </AspectRatio>
 
-                        <div className={classes.content}>
-                          <Text fw={500} size="md">
-                            {sub.label}
-                          </Text>
-                        </div>
-                      </Paper>
-                    ))}
+                          <div className={classes.content}>
+                            <Text fw={500} size="md">
+                              {sub.label}
+                            </Text>
+                          </div>
+                        </Paper>
+                      );
+                      if (sub.active === true) return CardContent;
+                    })}
                   </SimpleGrid>
                 </Popover.Dropdown>
               </Popover>
@@ -199,7 +202,7 @@ export function Header() {
               >
                 {link.label}
               </Text>
-            )
+            ),
           )}
         </Group>
 
@@ -256,7 +259,7 @@ export function Header() {
                 >
                   {link.label}
                 </Text>
-              )
+              ),
             )}
           </Stack>
         </Drawer>

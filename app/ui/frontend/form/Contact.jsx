@@ -1,6 +1,6 @@
 "use client";
 
-import { sendEmail } from "@/app/lib/actions";
+import { sendEmail } from "@/lib/actions";
 import {
   Box,
   Button,
@@ -14,7 +14,8 @@ import {
   rem,
 } from "@mantine/core";
 import { IconAt, IconMapPin, IconPhone, IconSun } from "@tabler/icons-react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import classes from "./Contact.module.css";
 
 function ContactIcon({ icon: Icon, title, description, ...others }) {
@@ -37,18 +38,18 @@ function ContactIcon({ icon: Icon, title, description, ...others }) {
 const infos = [
   {
     title: "Email",
-    description: "restorfxbourgenbresse@restorfx.com",
+    description: "contact@prismauto.fr",
     icon: IconAt,
   },
-  { title: "Téléphone", description: "04 XX XX XX XX", icon: IconPhone },
+  { title: "Téléphone", description: "04 58 28 33 85", icon: IconPhone },
   {
     title: "Adresse",
-    description: "623 chemin d'Éternaz 01000 Bourg-en-Bresse",
+    description: "1852 av de trévoux 01000 St denis les bourg",
     icon: IconMapPin,
   },
   {
     title: "Horaires",
-    description: "8h30 à 12h et de 13h à 18h du lundi au samedi",
+    description: "8h30 à 12h et de 13h à 17h30 du lundi au vendredi",
     icon: IconSun,
   },
 ];
@@ -61,13 +62,13 @@ export function ContactIconsList() {
 }
 
 export function Contact() {
-  const [state, dispatch] = useFormState(sendEmail, undefined);
+  const [state, dispatch] = useActionState(sendEmail, undefined);
   return (
     <Paper radius="lg" maw="900px" mx="auto" my={40}>
       <div className={classes.wrapper}>
         <div
           className={classes.contacts}
-          style={{ backgroundImage: `url(/contactBg.jpg)` }}
+          style={{ backgroundImage: `url(/contactBg.svg)` }}
         >
           <Text fz="lg" fw={700} className={classes.title} c="#fff">
             Informations
@@ -84,13 +85,13 @@ export function Contact() {
           <div className={classes.fields}>
             <SimpleGrid cols={{ base: 1, sm: 2 }}>
               <TextInput
-                label="Votre nom"
+                label="Nom - Prénom"
                 name="name"
-                placeholder="Prénom - Nom"
+                placeholder="Nom + Prénom "
                 required
               />
               <TextInput
-                label="Votre email"
+                label="Email"
                 name="email"
                 placeholder="Votre email"
                 required
@@ -107,9 +108,9 @@ export function Contact() {
 
             <Textarea
               mt="md"
-              label="Votre message"
+              label="Message"
               name="message"
-              placeholder="Votre message"
+              placeholder="votre message ici..."
               minRows={3}
             />
 

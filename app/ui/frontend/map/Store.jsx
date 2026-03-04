@@ -10,11 +10,11 @@ export function MapWithPopup() {
 
   const openMaps = () => {
     const address = encodeURIComponent(
-      "1852 avenue de Trevoux 01000 Saint-Denis-les-Bourg"
+      "1852 avenue de Trevoux 01000 Saint-Denis-les-Bourg",
     );
 
     const isAppleDevice = /iPad|iPhone|iPod|Macintosh/.test(
-      navigator.userAgent
+      navigator.userAgent,
     );
 
     if (isAppleDevice) {
@@ -24,7 +24,7 @@ export function MapWithPopup() {
       // Google Maps
       window.open(
         `https://www.google.com/maps/search/?api=1&query=${address}`,
-        "_blank"
+        "_blank",
       );
     }
   };
@@ -50,13 +50,13 @@ export function MapWithPopup() {
           >
             <Stack align="center" gap={2}>
               <Text size="sm" weight={500}>
-                Prism Auto | RestorFX
+                Prism Auto | RestorFX Bourg-en-Bresse
               </Text>
               <Text size="xs" c="dimmed">
                 1852 avenue de Trévoux, 01000 Saint‑Denis‑lès‑Bourg
               </Text>
               <Text size="xs" c="dimmed">
-                📞 01 23 45 67 89
+                📞 04 58 28 33 85
               </Text>
               <Text size="xs" c="dimmed">
                 Ouverture du lundi au vendredi de 8h30 à 12h et de 13h à 17h30
