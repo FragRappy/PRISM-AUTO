@@ -55,7 +55,7 @@ const links = [
       },
       {
         active: true,
-        href: "/prestation/trimfx",
+        href: "/prestation/restauration-plastiques",
         label: "Restauration des plastiques",
         img: Trimfx,
       },
@@ -73,7 +73,7 @@ const links = [
       },
       {
         active: true,
-        href: "/prestation/clearfx",
+        href: "/prestation/protection-ceramique",
         label: "Protection céramique",
         img: Clearfx,
       },
