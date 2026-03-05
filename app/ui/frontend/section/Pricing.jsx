@@ -1,77 +1,137 @@
 "use client";
 
-import { Container, SimpleGrid } from "@mantine/core";
-import { PricingCard } from "../card/Price";
+// components/PriceSection.js
+import {
+  Group,
+  Paper,
+  Table,
+  Tabs,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
+import { IconAdjustments, IconCheck, IconX } from "@tabler/icons-react";
 
-export function PricingSection() {
+export default function PriceSection({ interiorFeatures, exteriorFeatures }) {
+  const theme = useMantineTheme();
+
+  const tabsData = [
+    { label: "Intérieur", value: "interior", features: interiorFeatures },
+    { label: "Extérieur", value: "exterior", features: exteriorFeatures },
+    {
+      label: "Intérieur + Extérieur",
+      value: "both",
+      features: [...interiorFeatures, ...exteriorFeatures],
+    },
+  ];
+
+  const plans = [
+    {
+      name: "Express",
+      price: { interior: "€30", exterior: "€25", both: "€50" },
+    },
+    { name: "Basic", price: { interior: "€50", exterior: "€40", both: "€80" } },
+    {
+      name: "Premium",
+      price: { interior: "€80", exterior: "€50", both: "€120" },
+    },
+  ];
+
+  const renderIcon = (status) => {
+    if (status === "check") return <IconCheck size={20} color="green" />;
+    if (status === "cross") return <IconX size={20} color="red" />;
+    if (status === "option")
+      return <IconAdjustments size={20} color="orange" />;
+    return null;
+  };
+
   return (
-    <Container size="lg" py="xl">
-      <SimpleGrid cols={{ base: 1, md: 4 }} spacing="lg">
-        <PricingCard
-          title="Free Lite"
-          subtitle="It's totally free"
-          price="0$"
-          badge="Current plan"
-          cta="Current Plan"
-          features={[
-            { label: "Up to 1 User", available: true },
-            { label: "All UI components", available: true },
-            { label: "Lifetime access", available: true },
-            { label: "Free updates", available: true },
-            { label: "Community support", available: false },
-            { label: "Downloadable files", available: false },
-          ]}
-        />
+    <>
+      {/* Tabs centrés en dehors du Paper */}
+      <Group position="center" mb="md">
+        <Tabs defaultValue="interior" variant="pills" radius="md">
+          <Tabs.List>
+            {tabsData.map((tab) => (
+              <Tabs.Tab key={tab.value} value={tab.value}>
+                {tab.label}
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+        </Tabs>
+      </Group>
 
-        <PricingCard
-          title="Starter"
-          subtitle="Single site"
-          oldPrice="39$"
-          price="29$"
-          cta="Get the plan"
-          features={[
-            { label: "Up to 5 Users", available: true },
-            { label: "All UI components", available: true },
-            { label: "Lifetime access", available: true },
-            { label: "Free updates", available: true },
-            { label: "Community support", available: true },
-            { label: "Downloadable files", available: false },
-          ]}
-        />
+      <Paper shadow="sm" radius="md" p="md">
+        <Tabs keepMounted={false} defaultValue="interior">
+          {tabsData.map((tab) => (
+            <Tabs.Panel key={tab.value} value={tab.value} pt="md">
+              <Table verticalSpacing="sm" highlightOnHover>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: "left" }}>Service</th>
+                    {plans.map((plan, idx) => (
+                      <th
+                        key={plan.name}
+                        style={{
+                          textAlign: "center",
+                          borderRight:
+                            idx < plans.length - 1
+                              ? `1px solid ${theme.colors.gray[2]}`
+                              : "none",
+                        }}
+                      >
+                        {plan.name}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tab.features.map((feature, idx) => (
+                    <tr key={idx}>
+                      <td>{feature.name}</td>
+                      {plans.map((plan, idx2) => (
+                        <td
+                          key={plan.name}
+                          style={{
+                            textAlign: "center",
+                            borderRight:
+                              idx2 < plans.length - 1
+                                ? `1px solid ${theme.colors.gray[2]}`
+                                : "none",
+                          }}
+                        >
+                          {renderIcon(feature[plan.name.toLowerCase()])}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
 
-        <PricingCard
-          title="Business"
-          subtitle="Unlimited sites"
-          oldPrice="99$"
-          price="59$"
-          highlighted
-          cta="Get the plan"
-          features={[
-            { label: "Up to 10 Users", available: true },
-            { label: "All UI components", available: true },
-            { label: "Lifetime access", available: true },
-            { label: "Free updates", available: true },
-            { label: "Community support", available: true },
-            { label: "Downloadable files", available: true },
-          ]}
-        />
-
-        <PricingCard
-          title="Extended"
-          subtitle="For paying users"
-          oldPrice="259$"
-          price="189$"
-          cta="Get the plan"
-          features={[
-            { label: "Up to 50 Users", available: true },
-            { label: "All UI components", available: true },
-            { label: "Lifetime access", available: true },
-            { label: "Free updates", available: true },
-            { label: "Community support", available: true },
-            { label: "Downloadable files", available: true },
-          ]}
-        />
-      </SimpleGrid>
-    </Container>
+                  {/* Ligne prix en bas */}
+                  <tr>
+                    <td>
+                      <Text weight={700}>Prix</Text>
+                    </td>
+                    {plans.map((plan, idx) => (
+                      <td
+                        key={plan.name}
+                        style={{
+                          textAlign: "center",
+                          fontWeight: 700,
+                          borderTop: `2px solid ${theme.colors.gray[2]}`,
+                          borderRight:
+                            idx < plans.length - 1
+                              ? `1px solid ${theme.colors.gray[2]}`
+                              : "none",
+                        }}
+                      >
+                        {plan.price[tab.value]}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </Table>
+            </Tabs.Panel>
+          ))}
+        </Tabs>
+      </Paper>
+    </>
   );
 }

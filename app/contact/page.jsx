@@ -9,7 +9,9 @@ export default function Page() {
     <>
       <Header />
       <main>
-        <Contact />
+        <section>
+          <Contact />
+        </section>
       </main>
       <Footer />
     </>

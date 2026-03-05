@@ -70,7 +70,7 @@ export function Contact() {
           className={classes.contacts}
           style={{
             backgroundColor: "#000001",
-            backgroundImage: `url(/contactBg.svg)`,
+            backgroundImage: `url(/images/contactBg.svg)`,
           }}
         >
           <Text fz="lg" fw={700} className={classes.title} c="#fff">
