@@ -68,7 +68,10 @@ export function Contact() {
       <div className={classes.wrapper}>
         <div
           className={classes.contacts}
-          style={{ backgroundImage: `url(/contactBg.svg)` }}
+          style={{
+            backgroundColor: "#000001",
+            backgroundImage: `url(/contactBg.svg)`,
+          }}
         >
           <Text fz="lg" fw={700} className={classes.title} c="#fff">
             Informations
@@ -78,6 +81,18 @@ export function Contact() {
         </div>
 
         <form className={classes.form} action={dispatch}>
+          {/* Honeypot anti-bot */}
+          <input
+            type="text"
+            name="company"
+            autoComplete="off"
+            tabIndex="-1"
+            style={{
+              position: "absolute",
+              left: "-9999px",
+            }}
+          />
+          <input type="hidden" name="formTime" value={Date.now()} />
           <Text fz="lg" fw={700} className={classes.title}>
             Formulaire de contact
           </Text>
@@ -87,7 +102,7 @@ export function Contact() {
               <TextInput
                 label="Nom - Prénom"
                 name="name"
-                placeholder="Nom + Prénom "
+                placeholder="Nom - Prénom "
                 required
               />
               <TextInput
@@ -100,9 +115,9 @@ export function Contact() {
 
             <TextInput
               mt="md"
-              label="Sujet"
+              label="Objet"
               name="subject"
-              placeholder="Sujet"
+              placeholder="Objet de votre message"
               required
             />
 
@@ -110,8 +125,9 @@ export function Contact() {
               mt="md"
               label="Message"
               name="message"
-              placeholder="votre message ici..."
+              placeholder="Votre message"
               minRows={3}
+              required
             />
 
             <Group justify="flex-end" mt="md">

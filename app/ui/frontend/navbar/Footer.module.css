@@ -1,3 +1,13 @@
+.footer {
+  background-color: light-dark(
+    var(--mantine-color-gray-0),
+    var(--mantine-color-dark-7)
+  );
+  padding-top: 30px;
+  border-top: 1px solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}
+
 .inner {
   display: flex;
   justify-content: space-between;
@@ -30,9 +40,37 @@
 }
 
 .socialIcon {
-  color: var(--mantine-color-gray-9);
+  color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-yellow-5));
 
   &:hover {
     color: light-dark(#cf4bfe, var(--mantine-color-yellow-5));
+  }
+}
+
+.marquee {
+  display: flex;
+  margin-top: 20px;
+  width: 100% !important;
+  margin: 120px 0 0 0;
+  padding: var(--mantine-spacing-md);
+}
+
+.dark {
+  @mixin dark {
+    display: block;
+  }
+
+  @mixin light {
+    display: none;
+  }
+}
+
+.light {
+  @mixin light {
+    display: block;
+  }
+
+  @mixin dark {
+    display: none;
   }
 }
