@@ -112,9 +112,14 @@ export function PriceSection() {
       type: "exterior",
       includedIn: ["premium"],
     },
-    { name: "Démoustiquage", type: "exterior", optional: true, price: 25 },
     {
-      name: "Traitement anti-odeurs",
+      name: "Décontamination résine / sève / moustique",
+      type: "exterior",
+      optional: true,
+      price: 25,
+    },
+    {
+      name: "Traitement anti-odeurs par ozone (tabac, animaux...)",
       type: "interior",
       includedIn: ["premium"],
       optional: true,
@@ -281,6 +286,7 @@ export function PriceSection() {
                     processing
                     position="middle-end"
                     offset={-25}
+                    classNames={{ indicator: classes.indicatorLabel }}
                   >
                     Intérieur + Extérieur
                   </Indicator>
@@ -299,14 +305,20 @@ export function PriceSection() {
           verticalSpacing="md"
           style={{ tableLayout: "fixed", width: "100%", marginTop: 30 }}
         >
+          <Table.Caption>
+            Tarifs Mars 2026 - Susceptible d'être modifié sans préavis.
+          </Table.Caption>
           <Table.Thead>
             <Table.Tr>
-              <Table.Th style={{ width: "52%" }}>Prestation</Table.Th>
-              <Table.Th style={{ width: "16%" }} ta="center">
+              <Table.Th style={{ width: "46%" }}>Prestation</Table.Th>
+              <Table.Th
+                style={{ width: "18%", fontSize: isMobile ? "10px" : "14px" }}
+                ta="center"
+              >
                 Express
               </Table.Th>
               <Table.Th
-                style={{ width: "16%" }}
+                style={{ width: "18%", fontSize: isMobile ? "10px" : "14px" }}
                 ta="center"
                 className={classes.popularColumn}
               >
@@ -316,12 +328,15 @@ export function PriceSection() {
                   size={isMobile ? 14 : 16}
                   position="top-center"
                   offset={-15}
-                  classNames={{ label: classes.popularLabel }}
+                  classNames={{ indicator: classes.popularLabel }}
                 >
                   Classic
                 </Indicator>
               </Table.Th>
-              <Table.Th style={{ width: "16%" }} ta="center">
+              <Table.Th
+                style={{ width: "18%", fontSize: isMobile ? "10px" : "14px" }}
+                ta="center"
+              >
                 Premium
               </Table.Th>
             </Table.Tr>

@@ -49,5 +49,27 @@
 }
 
 .popularLabel {
-  font-size: 8px;
+  --indicator-color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+  --indicator-text-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-dark-9)
+  );
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: 8px;
+  }
+}
+
+.indicatorLabel {
+  --indicator-color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+  --indicator-text-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-dark-9)
+  );
 }

@@ -1,4 +1,5 @@
 import { Group, Image } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import cx from "clsx";
 import NextImage from "next/image";
 import Link from "next/link";
@@ -9,6 +10,10 @@ import RestorFXLight from "../../../../public/restorfx-light.svg";
 import classes from "./Company.module.css";
 
 export function LogoCompany({ prismsize, restorfxsize }) {
+  const isMobile = useMediaQuery("(max-width: 576px)");
+
+  const prismHeight = isMobile ? 60 : prismsize || 80;
+  const restorHeight = isMobile ? 10 : restorfxsize || 12;
   return (
     <Group component={Link} href="/">
       <Group>
@@ -17,16 +22,16 @@ export function LogoCompany({ prismsize, restorfxsize }) {
           src={LogoLight}
           alt="Prism Auto Logo"
           className={cx(classes.light)}
-          height={prismsize ? prismsize : 80}
-          width={prismsize ? prismsize : 80}
+          height={prismHeight}
+          width={prismHeight}
         />
         <Image
           component={NextImage}
           src={LogoDark}
           alt="Prism Auto Logo"
           className={cx(classes.dark)}
-          height={prismsize ? prismsize : 80}
-          width={prismsize ? prismsize : 80}
+          height={prismHeight}
+          width={prismHeight}
         />
       </Group>
       <div className={classes.divider} />
@@ -36,14 +41,14 @@ export function LogoCompany({ prismsize, restorfxsize }) {
           src={RestorFXLight}
           alt="RestorFX Logo"
           className={cx(classes.light)}
-          height={restorfxsize ? restorfxsize : 12}
+          height={restorHeight}
         />
         <Image
           component={NextImage}
           src={RestorFXDark}
           alt="RestorFX Logo"
           className={cx(classes.dark)}
-          height={restorfxsize ? restorfxsize : 12}
+          height={restorHeight}
         />
       </Group>
     </Group>
