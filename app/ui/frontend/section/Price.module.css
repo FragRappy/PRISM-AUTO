@@ -1,3 +1,7 @@
+.container {
+  margin-top: 70px;
+}
+
 .overflow {
   overflow: visible;
 }
@@ -31,4 +35,19 @@
 .checkboxHover:hover {
   transform: scale(1.05);
   transition: transform 0.2s ease;
+}
+
+.icon {
+  fill: var(--mantine-color-gray-4);
+}
+
+.iconActive {
+  fill: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+}
+
+.popularLabel {
+  font-size: 8px;
 }

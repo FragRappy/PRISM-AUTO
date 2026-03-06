@@ -9,6 +9,7 @@ import {
   SegmentedControl,
   Stack,
   Table,
+  Text,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconCircleCheckFilled } from "@tabler/icons-react";
@@ -17,7 +18,7 @@ import classes from "./Price.module.css";
 
 export function PriceSection() {
   const [valueVehicule, setValueVehicule] = useState("citadine");
-  const [valuePresta, setValuePresta] = useState("both");
+  const [valuePresta, setValuePresta] = useState("interior");
   const [options, setOptions] = useState({
     express: [],
     classic: [],
@@ -28,77 +29,96 @@ export function PriceSection() {
 
   const vehicleMultiplier = {
     citadine: 1,
-    compact: 1.05,
-    berline: 1.1,
-    suv: 1.2,
-    sportive: 1.2,
-    utilitaire: 1.35,
+    compact: 1.1,
+    berline: 1.2,
+    suv: 1.3,
+    sportive: 1.4,
+    utilitaire: 1.5,
   };
 
   const basePrices = {
-    interior: { express: 40, classic: 70, premium: 100 },
-    exterior: { express: 25, classic: 45, premium: 65 },
+    interior: { express: 49, classic: 79, premium: 109 },
+    exterior: { express: 49, classic: 69, premium: 89 },
   };
 
   const prestations = [
     {
-      name: "Dépoussiérage des plastiques",
-      type: "interior",
-      includedIn: ["classic", "premium"],
-    },
-    {
-      name: "Aspiration des moquettes",
+      name: "Aspiration des moquettes, tapis et coffre",
       type: "interior",
       includedIn: ["express", "classic", "premium"],
     },
     {
-      name: "Séchage des tapis",
+      name: "Nettoyage des plastiques",
+      type: "interior",
+      includedIn: ["express", "classic", "premium"],
+    },
+    {
+      name: "Nettoyage des vitres intérieures",
+      type: "interior",
+      includedIn: ["express", "classic", "premium"],
+    },
+    {
+      name: "Pressing des sièges, moquettes et tapis",
       type: "interior",
       includedIn: ["classic", "premium"],
     },
     {
-      name: "Injection / extracteur des sièges",
-      type: "interior",
-      includedIn: ["premium"],
-    },
-    {
-      name: "Séchage des sièges",
+      name: "Parfum d'ambiance",
       type: "interior",
       includedIn: ["classic", "premium"],
     },
-    { name: "Enlèvement d'odeur", type: "interior", includedIn: ["premium"] },
     {
-      name: "Assainissement des conduits d'aération",
+      name: "Pressing du ciel de toit",
       type: "interior",
       includedIn: ["premium"],
     },
     {
-      name: "Lavage carrosserie",
+      name: "Nettoyage des garnitures, seuils et joints",
+      type: "interior",
+      includedIn: ["premium"],
+    },
+    {
+      name: "Désinfection des conduits d'aération",
+      type: "interior",
+      includedIn: ["premium"],
+    },
+    {
+      name: "Lavage de la carrosserie",
       type: "exterior",
       includedIn: ["express", "classic", "premium"],
     },
     {
-      name: "Lavage compartiment moteur",
+      name: "Séchage de la carrosserie",
+      type: "exterior",
+      includedIn: ["express", "classic", "premium"],
+    },
+    {
+      name: "Nettoyage des vitres extérieures",
+      type: "exterior",
+      includedIn: ["express", "classic", "premium"],
+    },
+    {
+      name: "Nettoyage des jantes et passages de roues",
       type: "exterior",
       includedIn: ["classic", "premium"],
     },
     {
-      name: "Nettoyage des vitrages",
-      type: "exterior",
-      includedIn: ["classic", "premium"],
-    },
-    { name: "Nettoyage des jantes", type: "exterior", includedIn: ["premium"] },
-    {
-      name: "Application brillant pneus",
+      name: "Lavage du compartiment moteur",
       type: "exterior",
       includedIn: ["premium"],
     },
-    { name: "Démoustiquage", type: "exterior", optional: true, price: 10 },
     {
-      name: "Injection / extraction plafonnier",
+      name: "Cire de finition et brillant pneus",
+      type: "exterior",
+      includedIn: ["premium"],
+    },
+    { name: "Démoustiquage", type: "exterior", optional: true, price: 25 },
+    {
+      name: "Traitement anti-odeurs",
       type: "interior",
+      includedIn: ["premium"],
       optional: true,
-      price: 25,
+      price: 30,
     },
   ];
 
@@ -114,7 +134,10 @@ export function PriceSection() {
 
   const Check = ({ active }) => (
     <Center>
-      <IconCircleCheckFilled size={18} color={active ? "#71f515" : "#ced4da"} />
+      <IconCircleCheckFilled
+        size={18}
+        className={`${classes.icon} ${active ? classes.iconActive : ""}`}
+      />
     </Center>
   );
 
@@ -207,13 +230,16 @@ export function PriceSection() {
   };
 
   return (
-    <Container>
+    <Container className={classes.container}>
       <Stack spacing="xl">
         {/* Vehicule */}
+        <Text fw={500} mb={3}>
+          Pour quel type de véhicule ?
+        </Text>
         <SegmentedControl
           orientation={isMobile ? "vertical" : "horizontal"}
           size="md"
-          fullWidth={!isMobile}
+          fullWidth
           radius="md"
           value={valueVehicule}
           onChange={setValueVehicule}
@@ -228,13 +254,16 @@ export function PriceSection() {
         />
 
         {/* Prestation */}
+        <Text fw={500} mb={3} mt={30}>
+          Pour quelle prestation ?
+        </Text>
         <SegmentedControl
           orientation={isMobile ? "vertical" : "horizontal"}
           classNames={{
             root: classes.root,
             label: classes.label,
           }}
-          fullWidth={isMobile}
+          fullWidth
           size="md"
           value={valuePresta}
           onChange={setValuePresta}
@@ -245,8 +274,15 @@ export function PriceSection() {
             {
               label: (
                 <Center>
-                  <Indicator inline label="-15%" size={18} processing>
-                    Intérieur + extérieur
+                  <Indicator
+                    inline
+                    label="-15%"
+                    size={18}
+                    processing
+                    position="middle-end"
+                    offset={-25}
+                  >
+                    Intérieur + Extérieur
                   </Indicator>
                 </Center>
               ),
@@ -261,7 +297,7 @@ export function PriceSection() {
           withTableBorder
           withColumnBorders
           verticalSpacing="md"
-          style={{ tableLayout: "fixed", width: "100%" }}
+          style={{ tableLayout: "fixed", width: "100%", marginTop: 30 }}
         >
           <Table.Thead>
             <Table.Tr>
@@ -274,7 +310,14 @@ export function PriceSection() {
                 ta="center"
                 className={classes.popularColumn}
               >
-                <Indicator inline label="Populaire" size={16}>
+                <Indicator
+                  inline
+                  label="Populaire"
+                  size={isMobile ? 14 : 16}
+                  position="top-center"
+                  offset={-15}
+                  classNames={{ label: classes.popularLabel }}
+                >
                   Classic
                 </Indicator>
               </Table.Th>
