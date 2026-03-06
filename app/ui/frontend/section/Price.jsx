@@ -215,7 +215,7 @@ export function PriceSection() {
       <Table.Tr key={p.name} className={classes.rowHover}>
         <Table.Td className={classes.cellHover}>
           {p.name}{" "}
-          <Badge ml={8} variant="light">
+          <Badge ml={8} variant="light" className={classes.optionBadge}>
             +{p.price}€
           </Badge>
         </Table.Td>
@@ -310,15 +310,15 @@ export function PriceSection() {
           </Table.Caption>
           <Table.Thead>
             <Table.Tr>
-              <Table.Th style={{ width: "46%" }}>Prestation</Table.Th>
+              <Table.Th style={{ width: "49%" }}>Prestation</Table.Th>
               <Table.Th
-                style={{ width: "18%", fontSize: isMobile ? "10px" : "14px" }}
+                style={{ width: "17%", fontSize: isMobile ? "10px" : "14px" }}
                 ta="center"
               >
                 Express
               </Table.Th>
               <Table.Th
-                style={{ width: "18%", fontSize: isMobile ? "10px" : "14px" }}
+                style={{ width: "17%", fontSize: isMobile ? "10px" : "14px" }}
                 ta="center"
                 className={classes.popularColumn}
               >
@@ -334,7 +334,7 @@ export function PriceSection() {
                 </Indicator>
               </Table.Th>
               <Table.Th
-                style={{ width: "18%", fontSize: isMobile ? "10px" : "14px" }}
+                style={{ width: "17%", fontSize: isMobile ? "10px" : "14px" }}
                 ta="center"
               >
                 Premium

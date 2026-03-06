@@ -73,3 +73,12 @@
     var(--mantine-color-dark-9)
   );
 }
+
+.optionBadge {
+  background: light-dark(rgba(34, 139, 230, 0.15), rgba(255, 206, 0, 0.2));
+
+  color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+}
