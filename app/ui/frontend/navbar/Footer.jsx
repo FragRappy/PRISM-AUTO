@@ -15,13 +15,13 @@ import { MapWithPopup } from "../map/Store";
 import classes from "./Footer.module.css";
 
 const links = [
-  { link: "cookies", label: "Cookies" },
-  { link: "mentions-legales", label: "Mentions légales" },
+  { link: "/cookies", label: "Cookies" },
+  { link: "/mentions-legales", label: "Mentions légales" },
   {
-    link: "politique-de-confidentialite",
+    link: "/politique-de-confidentialite",
     label: "Politique de confidentialité",
   },
-  { link: "CGU", label: "CGU" },
+  { link: "/cgu", label: "CGU" },
 ];
 
 export function Footer() {
