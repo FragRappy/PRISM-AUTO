@@ -10,6 +10,7 @@ import {
   Stack,
   Table,
   Text,
+  Title,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconCircleCheckFilled } from "@tabler/icons-react";
@@ -17,7 +18,7 @@ import { useState } from "react";
 import classes from "./Price.module.css";
 
 export function PriceSection() {
-  const [valueVehicule, setValueVehicule] = useState("citadine");
+  const [valueVehicule, setValueVehicule] = useState("urbaine");
   const [valuePresta, setValuePresta] = useState("interior");
   const [options, setOptions] = useState({
     express: [],
@@ -28,17 +29,41 @@ export function PriceSection() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const vehicleMultiplier = {
-    citadine: 1,
-    compact: 1.1,
-    berline: 1.2,
-    suv: 1.3,
-    sportive: 1.4,
-    utilitaire: 1.5,
+    urbaine: 1,
+    citadine: 1.1,
+    compact: 1.2,
+    berline: 1.3,
+    suv: 1.4,
+    luxe: 1.5,
+    utilitaire: 1.6,
+  };
+
+  const exemplesVehicule = {
+    urbaine: "Smart, Fiat 500, Renault Twingo...",
+    citadine: "Peugeot 208, Renault Clio, Volkswagen Polo...",
+    compact: "Volkswagen Golf, Ford Focus, Renault Mégane...",
+    berline: "Audi A4, BMW Série 3, Mercedes Classe C...",
+    suv: "Nissan Qashqai, Peugeot 3008, Renault Kadjar...",
+    luxe: "BMW Série M, Porsche 911, Audi RS...",
+    utilitaire: "Renault Kangoo, Citroën Jumper, Fiat Ducato...",
   };
 
   const basePrices = {
-    interior: { express: 49, classic: 79, premium: 109 },
-    exterior: { express: 49, classic: 69, premium: 89 },
+    interior: { express: 49, classic: 69, premium: 89 },
+    exterior: { express: 49, classic: 69, premium: 99 },
+  };
+
+  const durationMap = {
+    interior: {
+      express: [30, 45],
+      classic: [60, 90],
+      premium: [120, 150],
+    },
+    exterior: {
+      express: [30, 45],
+      classic: [60, 90],
+      premium: [120, 150],
+    },
   };
 
   const prestations = [
@@ -126,6 +151,32 @@ export function PriceSection() {
       price: 30,
     },
   ];
+
+  const formatDuration = (type, pack) => {
+    let min, max;
+
+    if (type === "both") {
+      // Additionner interior + exterior
+      const interior = durationMap.interior[pack];
+      const exterior = durationMap.exterior[pack];
+      min = interior[0] + exterior[0];
+      max = interior[1] + exterior[1];
+    } else {
+      const dur = durationMap[type][pack];
+      min = dur[0];
+      max = dur[1];
+    }
+
+    const formatTime = (minutes) => {
+      if (minutes < 60) return `${minutes} min`;
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      if (mins === 0) return `${hours}h`;
+      return `${hours}h${mins}`;
+    };
+
+    return `${formatTime(min)} - ${formatTime(max)}`;
+  };
 
   const toggleOption = (pack, optionName) => {
     setOptions((prev) => {
@@ -235,8 +286,24 @@ export function PriceSection() {
   };
 
   return (
-    <Container className={classes.container}>
+    <Container mt={40}>
       <Stack spacing="xl">
+        {/* Titre principal H1 */}
+        <Title
+          order={1}
+          ta="center"
+          fz={isMobile ? 28 : 36} // taille responsive
+          fw={700} // gras
+          mb={10}
+        >
+          Lavage et nettoyage automobile : Nos tarifs
+        </Title>
+
+        {/* Sous-titre pour contexte */}
+        <Text size="md" ta="center" c="dimmed" mb={30}>
+          Découvrez nos prestations pour tous types de véhicules et forfaits
+          adaptés à vos besoins
+        </Text>
         {/* Vehicule */}
         <Text fw={500} mb={3}>
           Pour quel type de véhicule ?
@@ -249,14 +316,22 @@ export function PriceSection() {
           value={valueVehicule}
           onChange={setValueVehicule}
           data={[
+            { label: "Urbaine", value: "urbaine" },
             { label: "Citadine", value: "citadine" },
             { label: "Compact", value: "compact" },
             { label: "Berline", value: "berline" },
             { label: "SUV / Break", value: "suv" },
-            { label: "Sportive", value: "sportive" },
+            { label: "Luxe", value: "luxe" },
             { label: "Utilitaire", value: "utilitaire" },
           ]}
         />
+
+        {/* Exemple de voiture */}
+        {valueVehicule && exemplesVehicule[valueVehicule] && (
+          <Text c="dimmed" fz="sm">
+            Exemples : {exemplesVehicule[valueVehicule]}
+          </Text>
+        )}
 
         {/* Prestation */}
         <Text fw={500} mb={3} mt={30}>
@@ -341,7 +416,16 @@ export function PriceSection() {
               </Table.Th>
             </Table.Tr>
           </Table.Thead>
-
+          <Table.Tbody>
+            <Table.Tr className={classes.durationRow}>
+              <Table.Td>Durée total estimée</Table.Td>
+              {["express", "classic", "premium"].map((pack) => (
+                <Table.Td key={pack}>
+                  <Center>{formatDuration(valuePresta, pack)}</Center>
+                </Table.Td>
+              ))}
+            </Table.Tr>
+          </Table.Tbody>
           <Table.Tbody>
             {valuePresta === "both" && (
               <>

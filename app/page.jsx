@@ -1,4 +1,5 @@
 import { FeaturesCard } from "./ui/frontend/card/Feature";
+import { HeroCarousel } from "./ui/frontend/carousel/Hero";
 import { Footer } from "./ui/frontend/navbar/Footer";
 import { Header } from "./ui/frontend/navbar/Header";
 
@@ -8,7 +9,7 @@ export default function Home() {
       <Header />
       <main>
         <section>
-          {/* <HeroCarousel /> */}
+          <HeroCarousel />
           <FeaturesCard />
         </section>
       </main>

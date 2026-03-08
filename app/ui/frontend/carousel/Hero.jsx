@@ -1,31 +1,50 @@
+"use client";
+
 import { Carousel } from "@mantine/carousel";
 import { Button, Paper, Text, Title } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import {
+  IconArrowRight,
+  IconChevronLeft,
+  IconChevronRight,
+} from "@tabler/icons-react";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 import { useRef } from "react";
-import ClearFXimg from "../../../../public/clearfx-hero.jpg";
-import Numberimg from "../../../../public/number-hero.png";
-import RestorFXimg from "../../../../public/restorfx-hero.jpg";
+import ClearFXimg from "../../../../public/images/clearfx-hero.jpg";
+import EntretienImg from "../../../../public/images/entretien.webp";
+import RestorFXimg from "../../../../public/images/restorfx-hero.jpg";
+import VapeurImg from "../../../../public/images/vapeur.png";
 import classes from "./Hero.module.css";
 
 const data = [
   {
+    image: VapeurImg,
+    title: "Lavage et nettoyage écologique",
+    category: "Lavage et Nettoyage  auto",
+    href: "/prestation/lavage-nettoyage",
+  },
+  {
     image: RestorFXimg,
-    title: "Texte à propos de RestorFX",
-    category: "restorfx",
+    title: "Restauration du vernis sans peinture",
+    category: "RestorFX",
+    href: "/prestation/restorfx",
   },
   {
     image: ClearFXimg,
-    title: "Texte à propos de ClearFX",
-    category: "restorfx",
+    title: "Une protection adaptée à votre auto",
+    category: "Protection auto",
+    href: "/prestation/protection-ceramique",
   },
   {
-    image: Numberimg,
-    title: "Texte à propos de Number",
-    category: "restorfx",
+    image: EntretienImg,
+    title: "Une gamme d'entretien professionnel",
+    category: "Entretien auto",
+    href: "/prestation/restauration-plastiques",
   },
 ];
 
-function Card({ image, title, category }) {
+function Card({ image, title, category, href }) {
   return (
     <Paper
       shadow="md"
@@ -41,7 +60,18 @@ function Card({ image, title, category }) {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark" size="lg">
+      <Button
+        component={Link}
+        href={href}
+        variant="filled"
+        mt="xl"
+        radius="md"
+        size="md"
+        justify="space-between"
+        rightSection={<IconArrowRight size={14} />}
+        leftSection={<span />}
+        className={classes.cta}
+      >
         En savoir plus
       </Button>
     </Paper>
@@ -49,7 +79,8 @@ function Card({ image, title, category }) {
 }
 
 export function HeroCarousel() {
-  const autoplay = useRef(Autoplay({ delay: 10000 }));
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const autoplay = useRef(Autoplay({ delay: 5000 }));
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>
       <Card {...item} />
@@ -58,10 +89,19 @@ export function HeroCarousel() {
 
   return (
     <Carousel
+      classNames={{
+        root: classes.carousel,
+        control: classes.control,
+      }}
+      nextControlIcon={<IconChevronRight size={16} />}
+      previousControlIcon={<IconChevronLeft size={16} />}
       plugins={[autoplay.current]}
       slideSize={{ base: "100%" }}
       slideGap={{ base: "xl", sm: 2 }}
-      emblaOptions={{ align: "center", slidesToScroll: 1 }}
+      emblaOptions={{ loop: true, align: "center", slidesToScroll: 1 }}
+      controlSize={isMobile ? 40 : 50}
+      onMouseEnter={autoplay.current.stop}
+      onMouseLeave={() => autoplay.current.play()}
     >
       {slides}
     </Carousel>

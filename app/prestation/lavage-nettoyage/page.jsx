@@ -1,3 +1,4 @@
+import EcoSection from "@/app/ui/frontend/section/Eco";
 import { HighlightSection } from "@/app/ui/frontend/section/Highlight";
 import { PriceSection } from "@/app/ui/frontend/section/Price";
 import { Footer } from "../../ui/frontend/navbar/Footer";
@@ -12,6 +13,7 @@ export default function Page() {
       <main>
         <section>
           <PriceSection />
+          <EcoSection />
           <HighlightSection />
         </section>
       </main>

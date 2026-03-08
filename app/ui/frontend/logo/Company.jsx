@@ -24,6 +24,7 @@ export function LogoCompany({ prismsize, restorfxsize }) {
           className={cx(classes.light)}
           height={prismHeight}
           width={prismHeight}
+          loading="eager"
         />
         <Image
           component={NextImage}
@@ -32,6 +33,7 @@ export function LogoCompany({ prismsize, restorfxsize }) {
           className={cx(classes.dark)}
           height={prismHeight}
           width={prismHeight}
+          loading="eager"
         />
       </Group>
       <div className={classes.divider} />
@@ -42,6 +44,7 @@ export function LogoCompany({ prismsize, restorfxsize }) {
           alt="RestorFX Logo"
           className={cx(classes.light)}
           height={restorHeight}
+          loading="eager"
         />
         <Image
           component={NextImage}
@@ -49,6 +52,7 @@ export function LogoCompany({ prismsize, restorfxsize }) {
           alt="RestorFX Logo"
           className={cx(classes.dark)}
           height={restorHeight}
+          loading="eager"
         />
       </Group>
     </Group>

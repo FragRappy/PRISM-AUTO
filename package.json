@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mantine/carousel": "^9.0.0-alpha.3",
+    "@mantine/charts": "^8.3.16",
     "@mantine/core": "^9.0.0-alpha.3",
     "@mantine/form": "^9.0.0-alpha.3",
     "@mantine/hooks": "^9.0.0-alpha.3",
@@ -26,6 +27,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-email": "^5.2.9",
+    "recharts": "^3.8.0",
     "resend": "^6.9.3"
   },
   "devDependencies": {

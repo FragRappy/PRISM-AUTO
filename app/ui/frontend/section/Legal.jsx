@@ -21,7 +21,8 @@ export function LegalSection() {
           <Text fw={500}>Prism Auto</Text>
           <Text>SAS au capital de 1 000 €</Text>
           <Text>RCS Bourg-en-Bresse : 995 284 015</Text>
-          <Text>SIRET : Non disponible</Text>
+          <Text>SIRET : 995 284 015 00014</Text>
+          <Text>TVA intracommunautaire : FR94995284015</Text>
         </Stack>
         <Stack gap={2}>
           <Text fw={500}>Siège social :</Text>
@@ -38,7 +39,7 @@ export function LegalSection() {
             </Anchor>
           </Text>
           <Text>
-            Téléphone : <Anchor href="tel:0123456789">01 23 45 67 89</Anchor>
+            Téléphone : <Anchor href="tel:0458283385">04 58 28 33 85</Anchor>
           </Text>
         </Stack>
 
@@ -76,7 +77,15 @@ export function LegalSection() {
         <Text>
           L’ensemble des contenus présents sur le site (textes, images,
           graphismes, logos, icônes, etc.) est la propriété exclusive de Prism
-          Auto et RestorFX, sauf mention contraire.
+          Auto et de{" "}
+          <Anchor
+            href="https://restorfxfrance.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RestorFX France
+          </Anchor>
+          , sauf mention contraire.
         </Text>
         <Text>
           Toute reproduction, représentation, modification, publication ou
@@ -95,7 +104,7 @@ export function LegalSection() {
         <Title order={2}>Responsabilité</Title>
         <Text>
           Prism Auto s’efforce de fournir sur le site des informations aussi
-          précises que possible. Toutefois, elle ne saurait être tenue
+          précises que possible. Toutefois, Prism Auto ne saurait être tenue
           responsable des omissions, inexactitudes ou carences dans la mise à
           jour.
         </Text>
@@ -104,20 +113,32 @@ export function LegalSection() {
 
         <Title order={2}>Données personnelles</Title>
         <Text>
-          Le site ne collecte aucune donnée personnelle des utilisateurs. Aucun
-          formulaire, outil d’analyse, cookie ou dispositif de suivi n’est
-          utilisé.
-        </Text>
-
-        <Text>
           Conformément au Règlement Général sur la Protection des Données
           (RGPD), aucune information personnelle n’est enregistrée ou traitée.
         </Text>
 
         <Divider />
 
-        <Title order={2}>Cookies</Title>
-        <Text>Le site n’utilise aucun cookie ni traceur.</Text>
+        <Title order={2}>Liens hypertexte vers des sites tiers</Title>
+        <Text>
+          Ce site propose des liens hypertextes pointant vers des sites Internet
+          édités par des tiers. Ces liens sont établis de bonne foi et la
+          société Prism Auto ne peut être tenue pour responsable de
+          modifications intervenues sur ces sites. Par conséquent, ces liens
+          hypertextes ne sauraient, en aucun cas, engager la responsabilité de
+          la société Prism Auto. Il est précisé que les utilisateurs du site
+          sont invités à consulter les conditions d’utilisation et les
+          politiques de confidentialité de ces sites tiers avant de les
+          utiliser.
+        </Text>
+
+        <Divider />
+
+        <Title order={2}>Droit applicable</Title>
+        <Text>
+          Ce site ainsi que les présentes mentions légales sont soumis au droit
+          français
+        </Text>
       </Stack>
     </Container>
   );

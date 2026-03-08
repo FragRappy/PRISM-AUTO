@@ -226,14 +226,13 @@ export function Header() {
           <Stack mt={70} spacing="sm">
             {links.map((link) =>
               link.sublinks ? (
-                <div key={link.label}>
+                <div key={link.label} onClick={toggleServices}>
                   <Text
                     component="button"
                     className={classes.link}
-                    onClick={toggleServices}
                     style={{ width: "100%", textAlign: "left" }}
                   >
-                    {link.label}
+                    {link.label} {servicesOpen ? "⏶" : "⏷"}
                   </Text>
                   {servicesOpen && (
                     <Stack pl="md" spacing="xs">

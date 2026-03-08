@@ -25,13 +25,13 @@ const mockdata = [
     icon: IconLeaf,
     title: "Des produits écologiques",
     description:
-      "Tous nos forfaits utilisent des produits écologiques de haute qualité pour un lavage de voiture respectueux de l'environnement.",
+      "Tous nos forfaits utilisent des produits écologiques de haute qualité.",
   },
   {
     icon: IconCertificate,
     title: "Une Équipe certifiée",
     description:
-      "Notre équipe est formée et certifiée pour garantir un service de lavage de voiture de qualité.",
+      "Notre équipe est formée et certifiée pour garantir un service de qualité.",
   },
   {
     icon: IconThumbUp,

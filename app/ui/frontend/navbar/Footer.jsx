@@ -1,11 +1,7 @@
 "use client";
 
 import { ActionIcon, Group, Image, Marquee, Text } from "@mantine/core";
-import {
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandTiktok,
-} from "@tabler/icons-react";
+import { IconBrandInstagram, IconBrandTiktok } from "@tabler/icons-react";
 import cx from "clsx";
 import NextImage from "next/image";
 import Link from "next/link";
@@ -13,11 +9,20 @@ import LogoDark from "../../../../public/logo-dark.svg";
 import LogoLight from "../../../../public/logo-light.svg";
 import RestorFXDark from "../../../../public/restorfx-dark.svg";
 import RestorFXLight from "../../../../public/restorfx-light.svg";
+import ScrollToTop from "../components/ScrollToTop";
 import { LogoCompany } from "../logo/Company";
 import { MapWithPopup } from "../map/Store";
 import classes from "./Footer.module.css";
 
-const links = [{ link: "mentions-legales", label: "Mentions légales" }];
+const links = [
+  { link: "cookies", label: "Cookies" },
+  { link: "mentions-legales", label: "Mentions légales" },
+  {
+    link: "politique-de-confidentialite",
+    label: "Politique de confidentialité",
+  },
+  { link: "CGU", label: "CGU" },
+];
 
 export function Footer() {
   const items = links.map((link) => (
@@ -137,18 +142,6 @@ export function Footer() {
             </Text>
             <ActionIcon
               component={Link}
-              href="https://www.facebook.com/prismauto"
-              target="_blank"
-              size="lg"
-              variant="default"
-              radius="xl"
-              aria-label="Ouvre dans une nouvelle page la page facebook de prism auto"
-              className={classes.socialIcon}
-            >
-              <IconBrandFacebook size={25} stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon
-              component={Link}
               href="test"
               size="lg"
               variant="default"
@@ -170,6 +163,7 @@ export function Footer() {
               <IconBrandTiktok size={25} stroke={1.5} />
             </ActionIcon>
           </Group>
+          <ScrollToTop />
         </div>
       </footer>
     </>

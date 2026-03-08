@@ -14,17 +14,20 @@
   overflow: visible;
 }
 
-.container {
-  max-width: 900px;
-  width: 100%;
-}
-
 .sectionRow td {
   background: light-dark(
     var(--mantine-color-gray-2),
     var(--mantine-color-gray-7)
   );
   font-weight: 600;
+}
+
+.durationRow {
+  background-color: light-dark(
+    rgba(34, 139, 230, 0.15),
+    rgba(255, 206, 0, 0.2)
+  );
+  font-weight: 500;
 }
 
 .rowHover:hover {

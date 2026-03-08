@@ -9,7 +9,11 @@
 }
 
 .background {
-  background-color: rgba(217, 210, 14, 0.766); /* Black with 50% opacity */
+  /* background-color: rgba(217, 210, 14, 0.766);  */
+  background-color: light-dark(
+    rgba(34, 139, 230, 0.6),
+    rgba(252, 196, 25, 0.6)
+  );
   padding: var(--mantine-spacing-md);
   display: flex;
   flex-direction: column;
@@ -18,7 +22,7 @@
 
 .title {
   font-weight: 900;
-  color: var(--mantine-color-white);
+  color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-9));
   line-height: 1.2;
   font-size: 32px;
   margin-top: var(--mantine-spacing-xs);
@@ -26,9 +30,41 @@
 }
 
 .category {
-  color: var(--mantine-color-white);
+  color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-9));
   opacity: 0.7;
   font-weight: 700;
   text-transform: uppercase;
   cursor: default;
+}
+
+.cta {
+  background-color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+  color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-9));
+}
+
+.carousel:hover .control {
+  opacity: 1;
+}
+
+.control {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background-color: var(--mantine-color-body);
+  color: light-dark(var(--mantine-color-dark-9), var(--mantine-color-white));
+  border: var(--mantine-color-gray-7) solid 1px;
+}
+
+.control svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .control {
+    opacity: 1;
+  }
 }
