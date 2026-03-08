@@ -10,15 +10,15 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "@mantine/carousel": "^9.0.0-alpha.3",
-    "@mantine/charts": "^8.3.16",
-    "@mantine/core": "^9.0.0-alpha.3",
-    "@mantine/form": "^9.0.0-alpha.3",
-    "@mantine/hooks": "^9.0.0-alpha.3",
-    "@mantine/modals": "^9.0.0-alpha.3",
+    "@mantine/carousel": "^9.0.0-alpha.4",
+    "@mantine/charts": "^9.0.0-alpha.4",
+    "@mantine/core": "^9.0.0-alpha.4",
+    "@mantine/form": "^9.0.0-alpha.4",
+    "@mantine/hooks": "^9.0.0-alpha.4",
+    "@mantine/modals": "^9.0.0-alpha.4",
     "@react-email/components": "1.0.8",
     "@react-email/tailwind": "2.0.5",
-    "@tabler/icons-react": "^3.38.0",
+    "@tabler/icons-react": "^3.40.0",
     "embla-carousel": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
@@ -31,7 +31,7 @@
     "resend": "^6.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.5",
+    "@biomejs/biome": "2.4.6",
     "postcss": "^8.5.8",
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1"

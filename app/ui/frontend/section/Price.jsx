@@ -420,7 +420,10 @@ export function PriceSection() {
             <Table.Tr className={classes.durationRow}>
               <Table.Td>Durée total estimée</Table.Td>
               {["express", "classic", "premium"].map((pack) => (
-                <Table.Td key={pack}>
+                <Table.Td
+                  key={pack}
+                  style={{ fontSize: isMobile ? "10px" : "12px" }}
+                >
                   <Center>{formatDuration(valuePresta, pack)}</Center>
                 </Table.Td>
               ))}
