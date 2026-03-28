@@ -9,20 +9,11 @@ import LogoDark from "../../../../public/logo-dark.svg";
 import LogoLight from "../../../../public/logo-light.svg";
 import RestorFXDark from "../../../../public/restorfx-dark.svg";
 import RestorFXLight from "../../../../public/restorfx-light.svg";
-import ScrollToTop from "../components/ScrollToTop";
 import { LogoCompany } from "../logo/Company";
 import { MapWithPopup } from "../map/Store";
 import classes from "./Footer.module.css";
 
-const links = [
-  { link: "/cookies", label: "Cookies" },
-  { link: "/mentions-legales", label: "Mentions légales" },
-  {
-    link: "/politique-de-confidentialite",
-    label: "Politique de confidentialité",
-  },
-  { link: "/cgu", label: "CGU" },
-];
+const links = [{ link: "/mentions-legales", label: "Mentions légales" }];
 
 export function Footer() {
   const items = links.map((link) => (
@@ -71,14 +62,14 @@ export function Footer() {
             src={RestorFXLight}
             alt="RestorFX Logo"
             className={cx(classes.light)}
-            height={6}
+            height={15}
           />
           <Image
             component={NextImage}
             src={RestorFXDark}
             alt="RestorFX Logo"
             className={cx(classes.dark)}
-            height={6}
+            height={15}
           />
         </Group>
         <Group>
@@ -105,14 +96,14 @@ export function Footer() {
             src={RestorFXLight}
             alt="RestorFX Logo"
             className={cx(classes.light)}
-            height={6}
+            height={15}
           />
           <Image
             component={NextImage}
             src={RestorFXDark}
             alt="RestorFX Logo"
             className={cx(classes.dark)}
-            height={6}
+            height={15}
           />
         </Group>
       </Marquee>
@@ -120,7 +111,7 @@ export function Footer() {
         <MapWithPopup />
         <div className={classes.inner}>
           <Group className={classes.logo} gap={20}>
-            <LogoCompany prismsize={60} restorfxsize={10} />
+            <LogoCompany prismsize={60} restorfxsize={20} />
             <Text className={classes.dev} c="dimmed" size="xs">
               Développé avec 💜 par Prism Auto
             </Text>
@@ -142,7 +133,7 @@ export function Footer() {
             </Text>
             <ActionIcon
               component={Link}
-              href="test"
+              href="/"
               size="lg"
               variant="default"
               radius="xl"
@@ -153,7 +144,7 @@ export function Footer() {
             </ActionIcon>
             <ActionIcon
               component={Link}
-              href="test"
+              href="/"
               size="lg"
               variant="default"
               radius="xl"
@@ -163,7 +154,7 @@ export function Footer() {
               <IconBrandTiktok size={25} stroke={1.5} />
             </ActionIcon>
           </Group>
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
         </div>
       </footer>
     </>

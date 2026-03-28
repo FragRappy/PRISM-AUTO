@@ -18,51 +18,42 @@ import { useState } from "react";
 import classes from "./Price.module.css";
 
 export function PriceSection() {
-  const [valueVehicule, setValueVehicule] = useState("urbaine");
+  const [valueVehicule, setValueVehicule] = useState("citadine");
   const [valuePresta, setValuePresta] = useState("interior");
   const [options, setOptions] = useState({
     express: [],
-    classic: [],
-    premium: [],
+    diamond: [],
   });
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const vehicleMultiplier = {
-    urbaine: 1,
-    citadine: 1.1,
-    compact: 1.2,
-    berline: 1.3,
+    citadine: 1,
+    berline: 1.2,
     suv: 1.4,
-    luxe: 1.5,
     utilitaire: 1.6,
   };
 
   const exemplesVehicule = {
-    urbaine: "Smart, Fiat 500, Renault Twingo...",
-    citadine: "Peugeot 208, Renault Clio, Volkswagen Polo...",
-    compact: "Volkswagen Golf, Ford Focus, Renault Mégane...",
-    berline: "Audi A4, BMW Série 3, Mercedes Classe C...",
-    suv: "Nissan Qashqai, Peugeot 3008, Renault Kadjar...",
-    luxe: "BMW Série M, Porsche 911, Audi RS...",
+    citadine: "Peugeot 208, Renault Clio, Fiat 500...",
+    berline: "Audi A3, Volkswagen Golf, Mercedes Classe C...",
+    suv: "Peugeot 2008, Audi A6 allroad, Porsche 911...",
     utilitaire: "Renault Kangoo, Citroën Jumper, Fiat Ducato...",
   };
 
   const basePrices = {
-    interior: { express: 49, classic: 69, premium: 89 },
-    exterior: { express: 49, classic: 69, premium: 99 },
+    interior: { express: 39, diamond: 69 },
+    exterior: { express: 49, diamond: 69 },
   };
 
   const durationMap = {
     interior: {
-      express: [30, 45],
-      classic: [60, 90],
-      premium: [120, 150],
+      express: [30, 60],
+      diamond: [120, 180],
     },
     exterior: {
-      express: [30, 45],
-      classic: [60, 90],
-      premium: [120, 150],
+      express: [30, 60],
+      diamond: [120, 180],
     },
   };
 
@@ -70,72 +61,68 @@ export function PriceSection() {
     {
       name: "Aspiration des moquettes, tapis et coffre",
       type: "interior",
-      includedIn: ["express", "classic", "premium"],
+      includedIn: ["express", "diamond"],
     },
     {
       name: "Nettoyage des plastiques",
       type: "interior",
-      includedIn: ["express", "classic", "premium"],
+      includedIn: ["express", "diamond"],
     },
     {
       name: "Nettoyage des vitres intérieures",
       type: "interior",
-      includedIn: ["express", "classic", "premium"],
+      includedIn: ["express", "diamond"],
     },
     {
       name: "Pressing des sièges, moquettes et tapis",
       type: "interior",
-      includedIn: ["classic", "premium"],
+      includedIn: ["diamond"],
     },
     {
       name: "Parfum d'ambiance",
       type: "interior",
-      includedIn: ["classic", "premium"],
-    },
-    {
-      name: "Pressing du ciel de toit",
-      type: "interior",
-      includedIn: ["premium"],
+      includedIn: ["diamond"],
     },
     {
       name: "Nettoyage des garnitures, seuils et joints",
       type: "interior",
-      includedIn: ["premium"],
+      includedIn: ["diamond"],
     },
     {
       name: "Désinfection des conduits d'aération",
       type: "interior",
-      includedIn: ["premium"],
+      includedIn: ["diamond"],
     },
     {
       name: "Lavage de la carrosserie",
       type: "exterior",
-      includedIn: ["express", "classic", "premium"],
+      includedIn: ["express", "diamond"],
     },
     {
       name: "Séchage de la carrosserie",
       type: "exterior",
-      includedIn: ["express", "classic", "premium"],
+      includedIn: ["express", "diamond"],
     },
     {
       name: "Nettoyage des vitres extérieures",
       type: "exterior",
-      includedIn: ["express", "classic", "premium"],
+      includedIn: ["express", "diamond"],
     },
     {
       name: "Nettoyage des jantes et passages de roues",
       type: "exterior",
-      includedIn: ["classic", "premium"],
-    },
-    {
-      name: "Lavage du compartiment moteur",
-      type: "exterior",
-      includedIn: ["premium"],
+      includedIn: ["diamond"],
     },
     {
       name: "Cire de finition et brillant pneus",
       type: "exterior",
-      includedIn: ["premium"],
+      includedIn: ["diamond"],
+    },
+    {
+      name: "Lavage du compartiment moteur",
+      type: "exterior",
+      optional: true,
+      price: 20,
     },
     {
       name: "Décontamination résine / sève / moustique",
@@ -144,11 +131,16 @@ export function PriceSection() {
       price: 25,
     },
     {
-      name: "Traitement anti-odeurs par ozone (tabac, animaux...)",
+      name: "Pressing du ciel de toit",
       type: "interior",
-      includedIn: ["premium"],
       optional: true,
       price: 30,
+    },
+    {
+      name: "Traitement anti-odeurs par ozone (tabac, animaux...)",
+      type: "interior",
+      optional: true,
+      price: 20,
     },
   ];
 
@@ -233,12 +225,7 @@ export function PriceSection() {
               className={`${classes.popularColumn} ${classes.popularColumnHover}`}
             >
               <Center>
-                <Check active={includedPrestations(p, "classic")} />
-              </Center>
-            </Table.Td>
-            <Table.Td>
-              <Center>
-                <Check active={includedPrestations(p, "premium")} />
+                <Check active={includedPrestations(p, "diamond")} />
               </Center>
             </Table.Td>
           </Table.Tr>
@@ -270,7 +257,7 @@ export function PriceSection() {
             +{p.price}€
           </Badge>
         </Table.Td>
-        {["express", "classic", "premium"].map((pack) => (
+        {["express", "diamond"].map((pack) => (
           <Table.Td key={pack}>
             <Center>
               <Checkbox
@@ -316,12 +303,9 @@ export function PriceSection() {
           value={valueVehicule}
           onChange={setValueVehicule}
           data={[
-            { label: "Urbaine", value: "urbaine" },
-            { label: "Citadine", value: "citadine" },
-            { label: "Compact", value: "compact" },
-            { label: "Berline", value: "berline" },
-            { label: "SUV / Break", value: "suv" },
-            { label: "Luxe", value: "luxe" },
+            { label: "Urbaine / Citadine", value: "citadine" },
+            { label: "Compact / Berline", value: "berline" },
+            { label: "SUV / Break / Sportive", value: "suv" },
             { label: "Utilitaire", value: "utilitaire" },
           ]}
         />
@@ -360,7 +344,7 @@ export function PriceSection() {
                     size={18}
                     processing
                     position="middle-end"
-                    offset={-25}
+                    offset={-35}
                     classNames={{ indicator: classes.indicatorLabel }}
                   >
                     Intérieur + Extérieur
@@ -385,15 +369,15 @@ export function PriceSection() {
           </Table.Caption>
           <Table.Thead>
             <Table.Tr>
-              <Table.Th style={{ width: "49%" }}>Prestation</Table.Th>
+              <Table.Th style={{ width: "50%" }}>Prestation</Table.Th>
               <Table.Th
-                style={{ width: "17%", fontSize: isMobile ? "10px" : "14px" }}
+                style={{ width: "25%", fontSize: isMobile ? "10px" : "14px" }}
                 ta="center"
               >
                 Express
               </Table.Th>
               <Table.Th
-                style={{ width: "17%", fontSize: isMobile ? "10px" : "14px" }}
+                style={{ width: "25%", fontSize: isMobile ? "10px" : "14px" }}
                 ta="center"
                 className={classes.popularColumn}
               >
@@ -405,21 +389,15 @@ export function PriceSection() {
                   offset={-15}
                   classNames={{ indicator: classes.popularLabel }}
                 >
-                  Classic
+                  Diamant
                 </Indicator>
-              </Table.Th>
-              <Table.Th
-                style={{ width: "17%", fontSize: isMobile ? "10px" : "14px" }}
-                ta="center"
-              >
-                Premium
               </Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
             <Table.Tr className={classes.durationRow}>
-              <Table.Td>Durée total estimée</Table.Td>
-              {["express", "classic", "premium"].map((pack) => (
+              <Table.Td>Durée totale estimée</Table.Td>
+              {["express", "diamond"].map((pack) => (
                 <Table.Td
                   key={pack}
                   style={{ fontSize: isMobile ? "10px" : "12px" }}
@@ -457,11 +435,11 @@ export function PriceSection() {
                   ? "Prix (remise déjà appliquée)"
                   : "Prix"}
               </Table.Th>
-              {["express", "classic", "premium"].map((pack) => (
+              {["express", "diamond"].map((pack) => (
                 <Table.Th
                   key={pack}
                   ta="center"
-                  className={pack === "classic" ? classes.popularColumn : ""}
+                  className={pack === "diamond" ? classes.popularColumn : ""}
                 >
                   {calculatePrice(pack)}€
                 </Table.Th>

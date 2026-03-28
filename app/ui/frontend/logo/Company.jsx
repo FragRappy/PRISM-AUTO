@@ -13,7 +13,7 @@ export function LogoCompany({ prismsize, restorfxsize }) {
   const isMobile = useMediaQuery("(max-width: 576px)");
 
   const prismHeight = isMobile ? 60 : prismsize || 80;
-  const restorHeight = isMobile ? 10 : restorfxsize || 12;
+  const restorHeight = isMobile ? 20 : restorfxsize || 30;
   return (
     <Group component={Link} href="/">
       <Group>
