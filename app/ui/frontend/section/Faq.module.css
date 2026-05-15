@@ -1,0 +1,21 @@
+.item {
+  border: 1px solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  transition: border-color 0.2s ease;
+
+  &[data-active] {
+    border-color: light-dark(
+      var(--mantine-color-blue-filled),
+      var(--mantine-color-yellow-5)
+    );
+  }
+}
+
+.control {
+  &:hover {
+    background: light-dark(
+      var(--mantine-color-gray-0),
+      var(--mantine-color-dark-6)
+    );
+  }
+}

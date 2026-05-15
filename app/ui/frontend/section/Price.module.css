@@ -85,3 +85,49 @@
     var(--mantine-color-yellow-5)
   );
 }
+
+/* ── Forfait cards ─────────────────────────────────────────────────────────── */
+
+.forfaitCard {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: default;
+}
+
+.forfaitCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--mantine-shadow-md);
+}
+
+.forfaitCardPopular {
+  border-width: 2px;
+  border-color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: default;
+}
+
+.forfaitCardPopular:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--mantine-shadow-md);
+}
+
+.forfaitPrice {
+  color: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+  line-height: 1;
+}
+
+.forfaitPopularBadge {
+  background: light-dark(
+    var(--mantine-color-blue-filled),
+    var(--mantine-color-yellow-5)
+  );
+  color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-dark-9)
+  );
+}

@@ -1,3 +1,14 @@
 .border {
   padding: var(--mantine-spacing-md) var(--mantine-spacing-md);
 }
+
+.dark :global(.leaflet-popup-content-wrapper) {
+  background: #141420 !important;
+  color: #b0b3b8 !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6) !important;
+  border: none !important;
+}
+
+.dark :global(.leaflet-popup-tip) {
+  background: #141420 !important;
+}

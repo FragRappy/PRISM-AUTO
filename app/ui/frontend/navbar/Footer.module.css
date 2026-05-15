@@ -47,30 +47,71 @@
   }
 }
 
-.marquee {
+/* ── Banner infini ──────────────────────────────────────────────────────────
+   Le track (display: inline-flex) contient deux groupes identiques.
+   Sa largeur totale = 2 × un groupe.
+   translateX(-50%) = déplacer exactement un groupe.
+   Au reset, le groupe 2 (identique au groupe 1) est en place → seamless.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.bannerWrapper {
+  overflow: hidden;
+  margin-top: 80px;
+  padding: 16px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.bannerTrack {
+  display: inline-flex;
+  animation: bannerScroll 25s linear infinite;
+  will-change: transform;
+}
+
+.bannerGroup {
   display: flex;
-  margin-top: 20px;
-  width: 100% !important;
-  margin: 80px 0 0 0;
-  padding: var(--mantine-spacing-md);
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px;
+  flex-shrink: 0;
 }
 
-.dark {
-  @mixin dark {
-    display: block;
-  }
-
-  @mixin light {
-    display: none;
-  }
+.bannerPair {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
 }
 
-.light {
-  @mixin light {
-    display: block;
-  }
+.bannerImg {
+  display: block;
+  flex-shrink: 0;
+}
 
-  @mixin dark {
-    display: none;
-  }
+.bannerSep {
+  display: block;
+  width: 1px;
+  height: 28px;
+  flex-shrink: 0;
+  background: light-dark(
+    var(--mantine-color-gray-3),
+    var(--mantine-color-dark-4)
+  );
+}
+
+@keyframes bannerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
